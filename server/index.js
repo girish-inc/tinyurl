@@ -80,7 +80,9 @@ app.get('/:code', async (req, res, next) => {
 // Production: serve static files from client/dist
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/dist')));
-    app.get('*', (req, res) => {
+    // Catch-all route for React Router (Express 5 compatible)
+    // Use app.use() instead of app.get('*') for Express 5 compatibility
+    app.use((req, res) => {
         res.sendFile(path.join(__dirname, '../client/dist/index.html'));
     });
 }
