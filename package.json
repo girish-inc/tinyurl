@@ -1,0 +1,36 @@
+{
+  "name": "tinylink",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd server && nodemon index.js",
+    "dev:server": "npm run server",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently \"npm run dev:server\" \"npm run client\"",
+    "build": "cd client && npm run build",
+    "build:prisma": "prisma generate",
+    "start": "node server/index.js",
+    "start:prod": "npm run build:prisma && npm run build && npm run start",
+    "postinstall": "prisma generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.11",
+    "prisma": "^6.19.0"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.0",
+    "@tailwindcss/vite": "^4.1.17",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "nanoid": "^5.1.6",
+    "tailwindcss": "^4.1.17",
+    "vite": "^7.2.4"
+  }
+}

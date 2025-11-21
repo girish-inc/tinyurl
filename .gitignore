@@ -1,0 +1,120 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# Build outputs
+dist
+build
+client/dist
+client/build
+*.tsbuildinfo
+
+# Prisma
+/generated/prisma
+.prisma
+prisma/migrations/**/migration_lock.toml
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+.nyc_output
+
+# Cache directories
+.cache
+.parcel-cache
+.vite
+.turbo
+.eslintcache
+.stylelintcache
+.npm
+.yarn
+.pnpm-store
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE - IntelliJ IDEA / WebStorm
+.idea
+*.iml
+*.iws
+*.ipr
+out
+
+# IDE - Visual Studio Code
+.vscode
+!.vscode/extensions.json
+*.code-workspace
+
+# IDE - Other
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+.loadpath
+.externalToolBuilders/
+
+# Deployment artifacts
+.vercel
+.render
+.netlify
+.serverless
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# Testing
+.jest
+coverage
+.nyc_output
+
+# Misc
+*.pem
+.cert
+
+# Documentation files (excluded from git)
+*.md
+
+# ============================================
+# IMPORTANT: Deployment files - MUST be tracked
+# These files are required for Vercel and Render deployment
+# ============================================
+# Explicitly include deployment configuration files
+!render.yaml
+!client/vercel.json
+!vercel.json

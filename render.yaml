@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: tinylink-api
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build:prisma
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: PORT
+        value: 10000
+      - key: FRONTEND_URL
+        sync: false
+    healthCheckPath: /healthz
+
