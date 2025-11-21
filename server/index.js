@@ -77,14 +77,24 @@ app.get('/:code', async (req, res, next) => {
     }
 });
 
-// Production: serve static files from client/dist
+// Production: serve static files from client/dist (only if files exist)
+// This is for monolithic deployment. For separate frontend/backend, skip this.
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
-    // Catch-all route for React Router (Express 5 compatible)
-    // Use app.use() instead of app.get('*') for Express 5 compatibility
-    app.use((req, res) => {
-        res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-    });
+    const distPath = path.join(__dirname, '../client/dist');
+    const indexPath = path.join(distPath, 'index.html');
+    
+    // Check if dist directory exists (only serve static files if client was built)
+    const fs = require('fs');
+    if (fs.existsSync(distPath) && fs.existsSync(indexPath)) {
+        app.use(express.static(distPath));
+        // Catch-all route for React Router (Express 5 compatible)
+        app.use((req, res) => {
+            res.sendFile(indexPath);
+        });
+        console.log('✓ Static files enabled (monolithic deployment)');
+    } else {
+        console.log('ℹ Static files not found - assuming separate frontend/backend deployment');
+    }
 }
 
 // Global error handler - must be last middleware
